@@ -92,21 +92,21 @@ of the listener is invoked with the value of the full-filled promise
 If the promise has been broken then the whenBroken method of the
 listener is invoked.
 
-        ```java
-        public interface PromiseListener<V>{
-            /*
-            * this is called when the promise this listener is listening in
-            * on has been full-filled.
-            *
-            * @args it takes the value of the full-filled promise as an argument
-            */
-            void whenFullfilled(V value);
+```java
+public interface PromiseListener<V>{
+    /*
+    * this is called when the promise this listener is listening in
+    * on has been full-filled.
+    *
+    * @args it takes the value of the full-filled promise as an argument
+    */
+    void whenFullfilled(V value);
 
-            /*
-            * this is called when the promise this listener is listening in
-            * on has been broken.
-            *
-            */
-            void whenBroken(PromiseBrokenException promiseBrokenException);
-        }
-        ```
+    /*
+    * this is called when the promise this listener is listening in
+    * on has been broken.
+    *
+    */
+    void whenBroken(PromiseBrokenException promiseBrokenException);
+}
+```
