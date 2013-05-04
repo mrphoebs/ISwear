@@ -1,6 +1,7 @@
 ISwear
 ======
-A simple promise abstraction for java
+A simple promise abstraction for java.
+Inspired by sid's [vachan](https://github.com/sids/vachan "vachan")
 
 A Promise
 ---------
