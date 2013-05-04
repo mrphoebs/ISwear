@@ -16,6 +16,6 @@ Promises like futures allow one write concurrent code that looks very sequential
 
 **ISwear** is a simple promise abstraction and a few example implementations for java.
 
-
+    ` Promise resultPromise = service.getResultOfComputation(); `
 
 
