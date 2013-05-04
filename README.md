@@ -20,6 +20,7 @@ The Promise Interface
 ---------------------
 The promise interface is the heart of ISwear, following code demonstrates the use of the interface.
 
+    ```java
     Promise<String> resultPromise = service.getResultOfComputation();
 
     //this will return false until the promise is either fullfilled or broken, it's non blocking
@@ -75,6 +76,7 @@ The promise interface is the heart of ISwear, following code demonstrates the us
       */
       PromiseListener promiseListener = new ComposingPromiseListener();
       resultPromise.add(promiseListener);
+      ```
 
 The PromiseListener Interface
 -----------------------------
@@ -89,7 +91,7 @@ If the promise has been full-filled then the whenFullfilled method
 of the listener is invoked with the value of the full-filled promise
 If the promise has been broken then the whenBroken method of the
 listener is invoked.
-
+        ```java
         public interface PromiseListener<V>{
             /*
             * this is called when the promise this listener is listening in
@@ -106,3 +108,4 @@ listener is invoked.
             */
             void whenBroken(PromiseBrokenException promiseBrokenException);
         }
+        ```
