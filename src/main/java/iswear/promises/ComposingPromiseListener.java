@@ -34,10 +34,10 @@ public class ComposingPromiseListener<T> implements PromiseListener<T> {
         that are subscribed to this listener are attempted to be full-filled by this function.
      */
     @Override
-    public void whenFullfilled(T value) {
+    public void whenfulfilled(T value) {
         for(DeliverablePromise<T> promise: this.promises){
             try{
-                promise.fullFillPromise(value);
+                promise.fulfillPromise(value);
             }catch (PromiseRealizedException exception){
             }
         }

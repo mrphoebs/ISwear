@@ -20,7 +20,7 @@ public class DeliverablePromiseTest {
         assert !promiseToBreak.isRealized();
 
         try {
-            promiseToKeep.fullFillPromise(100l);
+            promiseToKeep.fulfillPromise(100l);
             promiseToBreak.breakPromise(new PromiseBrokenException("just felt like it"));
         }catch (PromiseRealizedException exception){
             exceptionThrown = true;
@@ -33,13 +33,13 @@ public class DeliverablePromiseTest {
     }
 
     @Test(enabled = true)
-    public void testIsFullFilledAndIsBroken() throws Exception{
+    public void testIsfulfilledAndIsBroken() throws Exception{
         DeliverablePromise promiseToKeep = new DeliverablePromise();
         DeliverablePromise promiseToBreak = new DeliverablePromise();
         boolean IllegalStateExceptionThrown = false;
 
         try {
-            promiseToKeep.isFullfilled();
+            promiseToKeep.isfulfilled();
         } catch (IllegalStateException exception){
             IllegalStateExceptionThrown = true;
         }
@@ -57,10 +57,10 @@ public class DeliverablePromiseTest {
         assert IllegalStateExceptionThrown;
 
         promiseToBreak.breakPromise(new PromiseBrokenException("just felt like it"));
-        promiseToKeep.fullFillPromise(100l);
+        promiseToKeep.fulfillPromise(100l);
 
-        assert promiseToKeep.isFullfilled();
-        assert !promiseToBreak.isFullfilled();
+        assert promiseToKeep.isfulfilled();
+        assert !promiseToBreak.isfulfilled();
 
         assert !promiseToKeep.isBroken();
         assert promiseToBreak.isBroken();
@@ -76,7 +76,7 @@ public class DeliverablePromiseTest {
 
         boolean promiseBrokenExceptionThrown = false;
 
-        promiseToKeep.fullFillPromise(100l);
+        promiseToKeep.fulfillPromise(100l);
         assert (Long)higherLevelPromiseToKeep.get(100000l, TimeUnit.SECONDS) == 100l;
 
 

@@ -16,7 +16,7 @@ import java.util.concurrent.TimeoutException;
     A deliverable promise is a promise that can be explicitly full-filled or broken
     Deliverable promise provides two methods to do the same.
 
-    one is a fullfillPromise(T value)
+    one is a fulfillPromise(T value)
     and another is breakPromise(promiseBrokenException)
  */
 
@@ -55,7 +55,7 @@ public class DeliverablePromise<T> implements Promise<T> {
 
 
     @Override
-    public boolean isFullfilled() throws IllegalStateException {
+    public boolean isfulfilled() throws IllegalStateException {
         if(isRealized()){
             return !broken;
         }
@@ -95,7 +95,7 @@ public class DeliverablePromise<T> implements Promise<T> {
     @Override
     public T get() throws PromiseBrokenException, InterruptedException {
         await();
-        if(isFullfilled()){
+        if(isfulfilled()){
             return value;
         }
         else {
@@ -109,7 +109,7 @@ public class DeliverablePromise<T> implements Promise<T> {
         await(timeout,timeUnit);
         if(isRealized())
 
-            if (isFullfilled())
+            if (isfulfilled())
                 return value;
             else
                 throw new PromiseBrokenException(promiseBrokenException);
@@ -135,7 +135,7 @@ public class DeliverablePromise<T> implements Promise<T> {
     * @arg value to be set
     * @throws PromiseRealizedException if the promise was already set.
     */
-    public void fullFillPromise(T value) throws PromiseRealizedException {
+    public void fulfillPromise(T value) throws PromiseRealizedException {
         if(!isRealized()){
             this.value = value;
             countDownLatch.countDown();
@@ -172,8 +172,8 @@ public class DeliverablePromise<T> implements Promise<T> {
     }
 
     private void triggerListener(PromiseListener promiseListener){
-        if(isFullfilled())
-            promiseListener.whenFullfilled(value);
+        if(isfulfilled())
+            promiseListener.whenfulfilled(value);
         else
             promiseListener.whenBroken(promiseBrokenException);
     }

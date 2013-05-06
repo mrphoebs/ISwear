@@ -34,7 +34,7 @@ public interface Promise<V> {
     * @return true if a promise is realized and full-filled, false if promise is realized and broken
     * @throws IllegalStateException if isRealized()==false
     */
-    boolean isFullfilled() throws IllegalStateException;
+    boolean isfulfilled() throws IllegalStateException;
 
     /*
     * Checks to see if the promise has been broken. A promise is said to have been broken
@@ -64,14 +64,14 @@ public interface Promise<V> {
     *
     * Blocking: Puts thread in a wait state
     * @throws InterruptedException if the calling/waiting thread is interrupted
-    * before either the promise is fullfilled or the timeout hasn't happened
+    * before either the promise is fulfilled or the timeout hasn't happened
     * */
     void await(long timeout, TimeUnit timeUnit) throws InterruptedException;
 
     /*
     * Puts the calling thread in a wait state until the promise has been realized
     * and either returns the value of the promise once it has been full-filled or
-    * throws a promise broken exception once the promis is broken.
+    * throws a promise broken exception once the promise is broken.
     *
     * Blocking: Puts thread in a wait state
     * @return value of the promise once it has been set
@@ -84,7 +84,7 @@ public interface Promise<V> {
     * Puts the calling thread in a wait state until the promise has either been
     * realized or the timeout period has expired. If the promise has been realized
     * then it either returns the value of the promise once it has been full-filled or
-    * throws a promise broken exception once the promis is broken. If the call has
+    * throws a promise broken exception once the promise is broken. If the call has
     * timed out a timeout exception is thrown.
     *
     * Blocking: puts the thread in a wait state
@@ -96,7 +96,7 @@ public interface Promise<V> {
     V get(long timeout, TimeUnit timeUnit) throws PromiseBrokenException, TimeoutException, InterruptedException;
 
     /*
-    * Adds a PromiseListener to the promise, whose whenFullfilled or whenBroken
+    * Adds a PromiseListener to the promise, whose whenfulfilled or whenBroken
     * method is invoked when the promise is realized.
     *
     * NonBlocking: it's a callback mechanism

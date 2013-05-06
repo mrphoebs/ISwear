@@ -24,7 +24,7 @@ The promise interface is the heart of ISwear, following code demonstrates the us
 ```java
 Promise<String> resultPromise = service.getResultOfComputation();
 
-//this will return false until the promise is either fullfilled or broken, it's non blocking
+//this will return false until the promise is either fulfilled or broken, it's non blocking
 resultPromise.isRealized();
 
 /*
@@ -34,7 +34,7 @@ resultPromise.isRealized();
 * promise has been broken. This should usually only be called once the promise has been
 * realized. If it's called before the promise has been realized, it throws an exception.
 */
-resultPromise.isFullfilled();
+resultPromise.isfulfilled();
 
 /*
 * Checks to see if the promise has been broken. A promise is said to have been broken
@@ -72,7 +72,7 @@ String result = resultPromise.get();
 String resultAlt = resultPromise.get(100l,TimeUnit.MILLISECONDS);
 
 /*
-* Adds a PromiseListener to the promise, whose whenFullfilled or whenBroken
+* Adds a PromiseListener to the promise, whose whenfulfilled or whenBroken
 * method is invoked when the promise is realized.
 */
 PromiseListener promiseListener = new ComposingPromiseListener();
@@ -88,7 +88,7 @@ listeners associated with it using the appropriate handler.
 How the promise invokes it's listeners is dependent on whether
 the promise has been full-filled or broken.
 
-If the promise has been full-filled then the whenFullfilled method
+If the promise has been full-filled then the whenfulfilled method
 of the listener is invoked with the value of the full-filled promise
 If the promise has been broken then the whenBroken method of the
 listener is invoked.
@@ -101,7 +101,7 @@ public interface PromiseListener<V>{
     *
     * @args it takes the value of the full-filled promise as an argument
     */
-    void whenFullfilled(V value);
+    void whenfulfilled(V value);
 
     /*
     * this is called when the promise this listener is listening in

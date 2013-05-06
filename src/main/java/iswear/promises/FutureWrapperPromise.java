@@ -29,7 +29,7 @@ public class FutureWrapperPromise<T> implements Promise<T> {
     }
 
     @Override
-    public boolean isFullfilled() throws IllegalStateException {
+    public boolean isfulfilled() throws IllegalStateException {
         return !future.isCancelled();
     }
 
@@ -118,8 +118,8 @@ public class FutureWrapperPromise<T> implements Promise<T> {
     }
 
     private void triggerListener(PromiseListener promiseListener){
-        if(isFullfilled())
-            try{promiseListener.whenFullfilled(future.get());}catch (Exception e){}
+        if(isfulfilled())
+            try{promiseListener.whenfulfilled(future.get());}catch (Exception e){}
         else
             promiseListener.whenBroken(promiseBrokenException);
     }

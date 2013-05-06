@@ -24,7 +24,7 @@ public class FutureWrapperPromiseTest {
         promise.await();
 
         assert promise.isRealized();
-        assert promise.isFullfilled();
+        assert promise.isfulfilled();
         assert promise.get() == "dude";
     }
 

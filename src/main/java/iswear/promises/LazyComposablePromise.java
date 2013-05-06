@@ -14,12 +14,12 @@ import java.util.concurrent.TimeoutException;
 /*
 * this promise is constructed using a bunch of promises on which it depends on
 * This promise is realized either when all it's constituent promises are successfully
-* fullfilled or when any one of it's constituent promises is broken.
+* fulfilled or when any one of it's constituent promises is broken.
 *
 * get returns a list of values of the constituent promises when all are successfully realized.
 * if any of them is broken, the get throws a promise broken exception
 *
-* the promise can only be fullfilled if we call an await/get on this promise.
+* the promise can only be fulfilled if we call an await/get on this promise.
 * This is what makes this promise lazy.
 */
 public class LazyComposablePromise<T> implements Promise<List<T>> {
@@ -46,7 +46,7 @@ public class LazyComposablePromise<T> implements Promise<List<T>> {
 
     //not exposed out due to lazy evaluation
     @Override
-    public boolean isFullfilled() throws IllegalStateException
+    public boolean isfulfilled() throws IllegalStateException
     {
         if(isRealized())
             return !broken;
@@ -112,8 +112,8 @@ public class LazyComposablePromise<T> implements Promise<List<T>> {
     }
 
     private void triggerListener(PromiseListener promiseListener){
-        if(isFullfilled())
-            promiseListener.whenFullfilled(value);
+        if(isfulfilled())
+            promiseListener.whenfulfilled(value);
         else
             promiseListener.whenBroken(promiseBrokenException);
     }

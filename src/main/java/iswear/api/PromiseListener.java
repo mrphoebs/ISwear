@@ -12,7 +12,7 @@ import iswear.exceptions.PromiseBrokenException;
  * How the promise invokes it's listeners is dependent on whether
  * the promise has been full-filled or broken.
  *
- * If the promise has been full-filled then the whenFullfilled method
+ * If the promise has been full-filled then the whenfulfilled method
  * of the listener is invoked with the value of the full-filled promise
  *
  * If the promise has been broken then the whenBroken method of the
@@ -25,7 +25,7 @@ public interface PromiseListener<V>{
     *
     * @args it takes the value of the full-filled promise as an argument
     */
-    void whenFullfilled(V value);
+    void whenfulfilled(V value);
 
     /*
     * this is called when the promise this listener is listening in
