@@ -17,6 +17,28 @@ Promises like futures allow one write concurrent code that looks very sequential
 
 **ISwear** is a simple promise abstraction and a few example implementations for java.
 
+Maven Repository and Artifact
+-----------------------------
+Add the clojars repo to you maven repositories section.
+
+```
+<repository>
+	<id>clojars</id>
+        <name>Clojars Repo</name>
+ 	<url>http://clojars.org/repo/</url>
+</repository>
+```
+
+Artifact details
+
+```
+<dependency>
+	<groupId>org.clojars.mrphoebs</groupId>
+        <artifactId>iswear</artifactId>
+        <version>1.0</version>
+</dependency>
+```
+
 The Promise Interface
 ---------------------
 The promise interface is the heart of ISwear, following code demonstrates the use of the interface.
